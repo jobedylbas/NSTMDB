@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "Network.h"
 
 @interface ViewController ()
-
+@property (strong, nonatomic) Network *network;
 @end
 
 @implementation ViewController
