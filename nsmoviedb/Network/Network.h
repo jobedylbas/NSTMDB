@@ -11,15 +11,14 @@
 
 @interface Network : NSObject
 
-FOUNDATION_EXPORT NSString *const key =  @"fb61737ab2cdee1c07a947778f249e7";
-
-FOUNDATION_EXPORT NSString *const *popularURL = @"https://api.themoviedb.org/3/movie/popular?" ;
-
-FOUNDATION_EXPORT NSString *const *nowPlayingURL = @"https://api.themoviedb.org/3/movie/now_playing?";
+@property (strong, nonatomic) NSDictionary *response;
+@property (strong, nonatomic) NSString *errorMessage;
 
 - (void) reqPopularMovies;
 
-- (NSString*) reqNowPlayingMovies;
+- (void) reqNowPlayingMovies;
+
++ (void) makeRequest: (NSURL*) url completion:(void (^)(NSDictionary *, NSError *))completionBlock;
 
 @end
 

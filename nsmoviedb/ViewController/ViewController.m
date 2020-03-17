@@ -20,6 +20,7 @@
     // Do any additional setup after loading the view.
     self.network = [[Network alloc] init];
     [self.network reqPopularMovies];
+
 }
 
 
