@@ -9,5 +9,13 @@
 #ifndef Movie_h
 #define Movie_h
 
+@interface Movie : NSObject
+
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSFloat *score;
+
+@end
 
 #endif /* Movie_h */
