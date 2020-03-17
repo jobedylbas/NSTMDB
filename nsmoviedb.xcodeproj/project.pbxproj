@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045E10932421433D0015E053 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E10922421433D0015E053 /* MovieDetailsViewController.m */; };
 		46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04A9241FF4D90047057C /* AppDelegate.m */; };
 		46CA04AD241FF4D90047057C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04AC241FF4D90047057C /* SceneDelegate.m */; };
 		46CA04B0241FF4D90047057C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04AF241FF4D90047057C /* ViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		045E10912421433D0015E053 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
+		045E10922421433D0015E053 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
 		46CA04A5241FF4D90047057C /* nsmoviedb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nsmoviedb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CA04A8241FF4D90047057C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46CA04A9241FF4D90047057C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +45,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045E108F242142890015E053 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46CA04B6241FF4DC0047057C /* LaunchScreen.storyboard */,
+				46CA04B1241FF4D90047057C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		045E10902421429E0015E053 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46CA04AE241FF4D90047057C /* ViewController.h */,
+				46CA04AF241FF4D90047057C /* ViewController.m */,
+				045E10912421433D0015E053 /* MovieDetailsViewController.h */,
+				045E10922421433D0015E053 /* MovieDetailsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		46CA049C241FF4D90047057C = {
 			isa = PBXGroup;
 			children = (
@@ -61,15 +84,13 @@
 		46CA04A7241FF4D90047057C /* nsmoviedb */ = {
 			isa = PBXGroup;
 			children = (
+				045E108F242142890015E053 /* View */,
+				045E10902421429E0015E053 /* Controller */,
 				46CA04A8241FF4D90047057C /* AppDelegate.h */,
 				46CA04A9241FF4D90047057C /* AppDelegate.m */,
 				46CA04AB241FF4D90047057C /* SceneDelegate.h */,
 				46CA04AC241FF4D90047057C /* SceneDelegate.m */,
-				46CA04AE241FF4D90047057C /* ViewController.h */,
-				46CA04AF241FF4D90047057C /* ViewController.m */,
-				46CA04B1241FF4D90047057C /* Main.storyboard */,
 				46CA04B4241FF4DC0047057C /* Assets.xcassets */,
-				46CA04B6241FF4DC0047057C /* LaunchScreen.storyboard */,
 				46CA04B9241FF4DC0047057C /* Info.plist */,
 				46CA04BA241FF4DC0047057C /* main.m */,
 			);
@@ -146,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045E10932421433D0015E053 /* MovieDetailsViewController.m in Sources */,
 				46CA04B0241FF4D90047057C /* ViewController.m in Sources */,
 				46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */,
 				46CA04BB241FF4DC0047057C /* main.m in Sources */,
