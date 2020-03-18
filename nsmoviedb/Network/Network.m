@@ -60,7 +60,9 @@
                           self.errorMessage = [error localizedDescription];
                       } else {
                           self.response = data;
-                          NSLog(@"%@", self.response);
+//                          NSLog(@"%@", data);
+                          self.parser = [[Parser alloc] init];
+                          [self.parser popularMovies: data];
                       }
                   }];
 }
@@ -76,7 +78,6 @@
                           self.errorMessage = [error localizedDescription];
                       } else {
                           self.response = data;
-                          NSLog(@"%@", self.response);
                       }
                   }];
 }

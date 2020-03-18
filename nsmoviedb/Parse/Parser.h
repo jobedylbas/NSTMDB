@@ -6,18 +6,19 @@
 //  Copyright © 2020 Jobe Diego Dylbas dos Santos. All rights reserved.
 //  This Class transform an JsonObject of Network to movies
 
-#import "Network.h"
 #ifndef Parse_h
 #define Parse_h
-@interface Parse : NSObject
+@interface Parser : NSObject
 
-@property (strong, nonatomic) Network *network;
+//@property (strong, nonatomic) Network *network;
 //@property (strong, nonatomic) NSArray<Movie> *popularMovies;
 //@property (strong, nonatomic) NSArray<Movie> *nowPlayingMovies;
 
-- (NSArray*) popularMovies;
+- (NSMutableArray*) popularMovies: (NSDictionary*) response;
 
-- (NSArray*) nowPlayingMovies;
+- (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response;
+
++ (NSString*) genreName: (NSNumber*) genreId;
 
 @end
 

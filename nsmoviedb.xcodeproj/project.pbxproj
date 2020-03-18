@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4659960C24213E0B00D3074E /* Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4659960B24213E0B00D3074E /* Parse.m */; };
+		4659960C24213E0B00D3074E /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4659960B24213E0B00D3074E /* Parser.m */; };
 		46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04A9241FF4D90047057C /* AppDelegate.m */; };
 		46CA04AD241FF4D90047057C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04AC241FF4D90047057C /* SceneDelegate.m */; };
 		46CA04B0241FF4D90047057C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04AF241FF4D90047057C /* ViewController.m */; };
@@ -21,8 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4659960A24213CE200D3074E /* Parse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parse.h; sourceTree = "<group>"; };
-		4659960B24213E0B00D3074E /* Parse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parse.m; sourceTree = "<group>"; };
+		4659960A24213CE200D3074E /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		4659960B24213E0B00D3074E /* Parser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		467C0BF224228EBD0061C00D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46CA04A5241FF4D90047057C /* nsmoviedb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nsmoviedb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CA04A8241FF4D90047057C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46CA04A9241FF4D90047057C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,10 +57,18 @@
 		4659960924213CAF00D3074E /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				4659960A24213CE200D3074E /* Parse.h */,
-				4659960B24213E0B00D3074E /* Parse.m */,
+				4659960A24213CE200D3074E /* Parser.h */,
+				4659960B24213E0B00D3074E /* Parser.m */,
 			);
 			path = Parse;
+			sourceTree = "<group>";
+		};
+		467C0BF124228EBC0061C00D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				467C0BF224228EBD0061C00D /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		46CA049C241FF4D90047057C = {
@@ -68,6 +77,7 @@
 				46CA04CD241FFFF80047057C /* Default-568h@2x.png */,
 				46CA04A7241FF4D90047057C /* nsmoviedb */,
 				46CA04A6241FF4D90047057C /* Products */,
+				467C0BF124228EBC0061C00D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,7 +229,7 @@
 				46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */,
 				46CA04BB241FF4DC0047057C /* main.m in Sources */,
 				46CA04AD241FF4D90047057C /* SceneDelegate.m in Sources */,
-				4659960C24213E0B00D3074E /* Parse.m in Sources */,
+				4659960C24213E0B00D3074E /* Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

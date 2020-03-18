@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jobe Diego Dylbas dos Santos. All rights reserved.
 //
 
+#import "Parser.h"
 #ifndef Network_h
 #define Network_h
 
@@ -14,6 +15,7 @@
 @property (strong, nonatomic) NSData *image;
 @property (strong, nonatomic) NSDictionary *response;
 @property (strong, nonatomic) NSString *errorMessage;
+@property (nonatomic) Parser *parser;
 
 - (void) reqPopularMovies;
 
