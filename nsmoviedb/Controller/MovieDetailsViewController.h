@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MovieDetailsViewController : UIViewController
+
+@property (strong, nonatomic) Movie *movie;
 
 @end
 
