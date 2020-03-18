@@ -10,25 +10,25 @@
         <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="moviesVC" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8RO-hF-BMI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8RO-hF-BMI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellID" id="CVk-WQ-FgM" customClass="TableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="120.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CVk-WQ-FgM" id="Ntc-Ds-k2P">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3mx-i6-Bgr">
-                                                    <rect key="frame" x="15" y="10" width="80" height="100"/>
+                                                    <rect key="frame" x="15" y="10" width="80.5" height="100.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3mx-i6-Bgr" secondAttribute="height" multiplier="4:5" id="D5E-tx-Qln"/>
                                                         <constraint firstAttribute="height" constant="100" id="TDl-VT-xsN"/>
@@ -36,19 +36,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZq-Bd-5lj">
-                                                    <rect key="frame" x="100" y="10" width="37" height="17"/>
+                                                    <rect key="frame" x="100.5" y="10" width="37" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-fW-vo8">
-                                                    <rect key="frame" x="100" y="32" width="33" height="16"/>
+                                                    <rect key="frame" x="100.5" y="32" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XUf-Nu-RdH">
-                                                    <rect key="frame" x="100" y="97" width="48" height="13"/>
+                                                    <rect key="frame" x="100.5" y="97.5" width="48" height="13"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umg-53-2h9">
                                                             <rect key="frame" x="0.0" y="0.0" width="12" height="13"/>
@@ -85,7 +85,7 @@
                                             <outlet property="poster" destination="3mx-i6-Bgr" id="mJY-b5-4qQ"/>
                                             <outlet property="rating" destination="wux-7R-czP" id="gOe-v4-j0J"/>
                                             <outlet property="title" destination="VZq-Bd-5lj" id="UMO-8f-vBD"/>
-                                            <segue destination="Z8i-um-WzX" kind="show" id="eGV-DP-cTJ"/>
+                                            <segue destination="Z8i-um-WzX" kind="show" identifier="movieDetailSegueIdentifier" id="eGV-DP-cTJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -105,6 +105,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="WsD-F8-Lkv"/>
+                    <connections>
+                        <outlet property="tableView" destination="8RO-hF-BMI" id="KDi-AE-otC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,7 +134,7 @@
         <!--Movie Details-->
         <scene sceneID="uRJ-zg-8oi">
             <objects>
-                <viewController id="Z8i-um-WzX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="movieDetailVC" id="Z8i-um-WzX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qSj-Z6-PK0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
