@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Movie.h"
 #import "TableViewCell.h"
+#import "MovieDetailsViewController.h"
 #import <Foundation/Foundation.h>
 
 
@@ -19,18 +20,17 @@
 @end
 
 @implementation ViewController
-{
-    UITableView *tableView;
-}
+
 NSString *cellID = @"cellID";
+NSString *segueIdentifier = @"movieDetailSegueIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self->tableView registerClass: UITableViewCell.class forCellReuseIdentifier:cellID];
-    [self feedTableView];
+//    [self feedTableView];
 }
 
-- (void)feedTableView {
+- (Movie *)feedTableView: (NSInteger *) indexRow {
+    
     Movie *movie1 = Movie.new;
     movie1.title = @"Title 01";
     movie1.movieDescription = @"Descp 01";
@@ -55,29 +55,80 @@ NSString *cellID = @"cellID";
     movie3.rating = @7.3;
     movie3.poster = NSData.new;
     
-    [self.movies addObject:movie1];
-    [self.movies addObject:movie2];
-    [self.movies addObject:movie3];
+    switch ( (NSInteger) indexRow) {
+        case 0:
+            return movie1;
+            break;
+        case 1:
+            return movie2;
+            break;
+        case 2:
+            return movie3;
+            break;
+        default:
+            return Movie.new;
+            break;
+    }
+//    [self.movies addObject:movie1];
+//    [self.movies addObject:movie2];
+//    [self.movies addObject:movie3];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_movies count] == 0 ? 3 : [_movies count];
+//    return [_movies count];
+    return 3;
 }
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-    [cell setData: [_movies objectAtIndex:indexPath.row]];
-    
+//    [cell setData: [_movies objectAtIndex:indexPath.row]];
+    [cell setData: [self feedTableView:indexPath.row]];
     return cell;
 }
 
 
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [self performSegueWithIdentifier:segueIdentifier sender:indexPath];
+//}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:segueIdentifier]) {
+        MovieDetailsViewController *vc = segue.destinationViewController;
+        NSInteger *row = [[self tableView] indexPathForSelectedRow].row;
+        row = row == nil ? 0 : row;
+        vc.movie = [self feedTableView: row];
+        
+    }
+}
 
+//override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//    if (segue.identifier == "showQuestionnaire") {
+//        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! QuestionnaireController
+//        let row = (sender as! NSIndexPath).row; //we know that sender is an NSIndexPath here.
+//        let patientQuestionnaire = patientQuestionnaires[row] as! PatientQuestionnaire
+//        controller.selectedQuestionnaire = patientQuestionnaire
+//    }
+//}
+//
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [self prepareForSegue:UIStoryboard.new sender:self];
+//}
+//
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    [segue destinationViewController];
+//    if ([segue.identifier isEqualToString:segueIdentifier]) {
+//
+//        MovieDetailsViewController *vc = segue.destinationViewController;
+//
+//    }
+//}
 
 @end
 
 
 
+
+// movieDetailSegueIdentifier
