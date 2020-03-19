@@ -17,14 +17,14 @@
 }
 
 - (void)setData: (Movie *) movie {
-    [self.poster.image initWithData:movie.poster];
+//    [self.poster.image initWithData:movie.poster];
     self.title.text = movie.title;
-    self.movieDescriptionLabel.text = movie.movieDescription;
+    self.movieDescriptionLabel.text = movie.overview;
     
     NSNumberFormatter *formatter = NSNumberFormatter.new;
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     formatter.maximumFractionDigits = 1;
-    self.rating.text = [formatter stringFromNumber:movie.rating];
+    self.rating.text = [formatter stringFromNumber:movie.score];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

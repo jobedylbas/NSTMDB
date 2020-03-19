@@ -33,26 +33,26 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
     
     Movie *movie1 = Movie.new;
     movie1.title = @"Title 01";
-    movie1.movieDescription = @"Descp 01";
-    movie1.sinopse = @"Sinopse 01";
-    movie1.story = @"Story 01";
-    movie1.rating = @7.1;
+    movie1.overview = @"My String";
+//    movie1.sinopse = @"Sinopse 01";
+//    movie1.story = @"Story 01";
+    movie1.score = @7.1;
     movie1.poster = NSData.new;
     
     Movie *movie2 = Movie.new;
     movie2.title = @"Title 02";
-    movie2.movieDescription = @"Descp 02";
-    movie2.sinopse = @"Sinopse 02";
-    movie2.story = @"Story 02";
-    movie2.rating = @7.2;
+    movie2.overview = @"Descp 02";
+//    movie2.sinopse = @"Sinopse 02";
+//    movie2.story = @"Story 02";
+    movie2.score= @7.2;
     movie2.poster = NSData.new;
     
     Movie *movie3 = Movie.new;
     movie3.title = @"Title 03";
-    movie3.movieDescription = @"Descp 03";
-    movie3.sinopse = @"Sinopse 03";
-    movie3.story = @"Story 03";
-    movie3.rating = @7.3;
+    movie3.overview = @"Descp 03";
+//    movie3.sinopse = @"Sinopse 03";
+//    movie3.story = @"Story 03";
+    movie3.score = @7.3;
     movie3.poster = NSData.new;
     
     switch ( (NSInteger) indexRow) {

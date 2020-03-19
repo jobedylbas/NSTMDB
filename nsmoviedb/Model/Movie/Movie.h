@@ -14,9 +14,11 @@
 @property (strong, nonatomic) NSData *poster;
 @property (nonatomic) NSNumber* tmdbId;
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *overview;
+@property (nonatomic, copy, readwrite) NSString *overview;
 @property (strong, nonatomic) NSString *category;
 @property (nonatomic) NSNumber *score;
+
+
 
 @end
 
