@@ -83,8 +83,8 @@
 				469FCE992423E08800605AA0 /* TableViewCell.m */,
 				469FCE9A2423E08800605AA0 /* MovieDetailsViewController.m */,
 				469FCE9B2423E08800605AA0 /* ViewController.m */,
-				469FCE9C2423E08800605AA0 /* MovieDetailsViewController.h */,
 				469FCE9D2423E08800605AA0 /* TableViewCell.h */,
+				469FCE9C2423E08800605AA0 /* MovieDetailsViewController.h */,
 				469FCE9E2423E08800605AA0 /* ViewController.h */,
 			);
 			name = Controller;
