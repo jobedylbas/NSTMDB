@@ -39,6 +39,7 @@
             if (error) {
                 completionBlock (nil, error);
             } else {
+                NSLog(@"%@", data);
                 completionBlock(data, error);
             }
         };
@@ -54,49 +55,41 @@
     static NSString* popularURL = @"https://api.themoviedb.org/3/movie/popular?api_key=";
     NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", popularURL, key]];
     
-    [Network makeRequest: url
-                  completion: ^(NSDictionary *data, NSError *error) {
-                      if (error) {
-                          self.errorMessage = [error localizedDescription];
-                      } else {
-                          self.response = data;
-//                          NSLog(@"%@", data);
-                          self.parser = [[Parser alloc] init];
-                          [self.parser popularMovies: data];
-                      }
-                  }];
+//    [Network makeRequest: url
+//                  completion: ^(NSDictionary *data, NSError *error) {
+//                      if (error) {
+//                          self.errorMessage = [error localizedDescription];
+//                      } else {
+//                          self.response = data;
+////                          NSLog(@"%@", data);
+//                          self.parser = [[Parser alloc] init];
+//                          [self.parser popularMovies: data];
+//                      }
+//                  }];
 }
 
-- (void) reqNowPlayingMovies {
+- (NSURL*) reqNowPlayingMovies {
     static NSString* key = @"fb61737ab2cdee1c07a947778f249e7d";
-    static NSString* nowPlayingURL = @"https://api.themoviedb.org/3/movie/now_playing?";
+    static NSString* nowPlayingURL = @"https://api.themoviedb.org/3/movie/now_playing?api_key=";
     NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", nowPlayingURL, key]];
-    
-     [Network makeRequest: url
-                  completion: ^(NSDictionary *data, NSError *error) {
-                      if (error) {
-                          self.errorMessage = [error localizedDescription];
-                      } else {
-                          self.response = data;
-                      }
-                  }];
+    return url;
+//     [Network makeRequest: url
+//                  completion: ^(NSDictionary *data, NSError *error) {
+//                      if (error) {
+//                          self.errorMessage = [error localizedDescription];
+//                      } else {
+//                          self.response = data;
+//                      }
+//                  }];
 }
 
-- (void) reqMoviePoster:(NSString *)movieId {
+- (NSURL*) reqMoviePoster:(NSString *)movieId {
     static NSString *key = @"fb61737ab2cdee1c07a947778f249e7d";
     static NSString *keyAttr = @"/images?api_key=";
     static NSString *prefix = @"https://api.themoviedb.org/3/movie/";
     NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@%@", prefix, movieId, keyAttr, key]];
     
-     [Network makePosterRequest: url
-                  completion: ^(NSData *data, NSError *error) {
-                      if (error) {
-                          self.errorMessage = [error localizedDescription];
-                      } else {
-                          self.image = data;
-//                          NSLog(@"%@", self.response);
-                      }
-                  }];
+    return url;
 }
 
 

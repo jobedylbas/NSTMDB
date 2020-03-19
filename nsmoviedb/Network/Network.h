@@ -19,13 +19,13 @@
 
 - (void) reqPopularMovies;
 
-- (void) reqNowPlayingMovies;
+- (NSURL*) reqNowPlayingMovies;
 
-- (void) reqMoviePoster: (NSString*) movieId;
+- (NSURL*) reqMoviePoster: (NSString*) movieId;
 
 + (void) makeRequest: (NSURL*) url completion:(void (^)(NSDictionary *, NSError *))completionBlock;
 
-+ (void) makePosterRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock;
+- (void) makePosterRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock;
 
 @end
 
