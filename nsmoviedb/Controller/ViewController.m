@@ -124,48 +124,13 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
     return cell;
 }
 
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self performSegueWithIdentifier:segueIdentifier sender:indexPath];
-//}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueIdentifier]) {
-        MovieDetailsViewController *vc = segue.destinationViewController;
+        MovieDetailsViewController *mdvc = [segue destinationViewController];
         NSInteger *row = [[self tableView] indexPathForSelectedRow].row;
         row = row == nil ? 0 : row;
-        vc.movie = [self feedTableView: row];
-        
+        mdvc.movie = [self feedTableView:row];
     }
 }
 
-//override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//    if (segue.identifier == "showQuestionnaire") {
-//        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! QuestionnaireController
-//        let row = (sender as! NSIndexPath).row; //we know that sender is an NSIndexPath here.
-//        let patientQuestionnaire = patientQuestionnaires[row] as! PatientQuestionnaire
-//        controller.selectedQuestionnaire = patientQuestionnaire
-//    }
-//}
-//
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self prepareForSegue:UIStoryboard.new sender:self];
-//}
-//
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    [segue destinationViewController];
-//    if ([segue.identifier isEqualToString:segueIdentifier]) {
-//
-//        MovieDetailsViewController *vc = segue.destinationViewController;
-//
-//    }
-//}
-
 @end
-
-
-
-
-// movieDetailSegueIdentifier

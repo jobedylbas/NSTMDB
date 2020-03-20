@@ -13,6 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MovieDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *posterImage;
+@property (weak, nonatomic) IBOutlet UILabel *movieTitle;
+@property (weak, nonatomic) IBOutlet UILabel *category;
+@property (weak, nonatomic) IBOutlet UILabel *rating;
+@property (weak, nonatomic) IBOutlet UILabel *overview;
+
 @property (strong, nonatomic) Movie *movie;
 
 @end

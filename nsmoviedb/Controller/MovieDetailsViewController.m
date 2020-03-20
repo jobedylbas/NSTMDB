@@ -18,6 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setData];
+}
+
+- (void)setData {
+    if ([self movie] != nil) {
+        [[self posterImage].image initWithData: [self movie].poster];
+        [self movieTitle].text = [self movie].title;
+        [self category].text = [self movie].category;
+        [self rating].text = [self movie].score.stringValue;
+        [self overview].text = [self movie].overview;
+    }
 }
 
 @end
