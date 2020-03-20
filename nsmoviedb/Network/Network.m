@@ -53,22 +53,12 @@
 //    NSLog(@"data: %@",jsonObject);
 }
 
-- (void) reqPopularMovies {
+- (NSURL*) reqPopularMovies {
     static NSString* key = @"fb61737ab2cdee1c07a947778f249e7d";
     static NSString* popularURL = @"https://api.themoviedb.org/3/movie/popular?api_key=";
     NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", popularURL, key]];
-//    NSLog(@"%@", url);
-//    [Network makeRequest: url
-//                  completion: ^(NSDictionary *data, NSError *error) {
-//                      if (error) {
-//                          self.errorMessage = [error localizedDescription];
-//                      } else {
-//                          self.response = data;
-////                          NSLog(@"%@", data);
-//                          self.parser = [[Parser alloc] init];
-//                          [self.parser popularMovies: data];
-//                      }
-//                  }];
+    
+    return url;
 }
 
 - (NSURL*) reqNowPlayingMovies {

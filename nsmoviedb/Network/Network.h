@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *errorMessage;
 @property (nonatomic) Parser *parser;
 
-- (void) reqPopularMovies;
+- (NSURL*) reqPopularMovies;
 
 - (NSURL*) reqNowPlayingMovies;
 

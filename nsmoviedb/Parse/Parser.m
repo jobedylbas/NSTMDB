@@ -42,7 +42,7 @@
 
 - (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response {
     NSMutableArray *movies = [NSMutableArray array];
-    Network *network = [[Network alloc] init];
+
     for (NSDictionary *movie in response[@"results"]) {
         Movie *_newMovie = [[Movie alloc] init];
         NSString *desc = movie[@"overview"];
