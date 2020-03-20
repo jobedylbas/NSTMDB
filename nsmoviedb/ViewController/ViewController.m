@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "Network.h"
 
 @interface ViewController ()
-
+@property (strong, nonatomic) Network *network;
 @end
 
 @implementation ViewController
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.network = [[Network alloc] init];
+    [self.network reqPopularMovies];
 }
 
 
