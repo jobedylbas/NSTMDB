@@ -43,7 +43,23 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
                           self.response = data;
                           self.parser = [[Parser alloc] init];
                           self.movies = [self.parser nowPlayingMovies: data];
-                          [self.tableView reloadData];
+                          __block int i = 0;
+                          for(Movie *movie in self.movies) {
+                              [Network makePosterRequest: [self.network reqMoviePoster: movie.posterPath]
+                                        completion: ^(NSData *data, NSError *error) {
+                                            if (error) {
+                                                NSLog(@"%@", [error localizedDescription]);
+                                            } else {
+                                                movie.poster = data;
+                                                NSLog(@"%i", i);
+                                                i = i + 1;
+                                                if(i == self.movies.count - 1) {
+                                                    [self.tableView reloadData];
+                                                }
+                                            }
+                                        }];
+                          }
+                            
                       }
                   }];
 //    [self feedTableView];

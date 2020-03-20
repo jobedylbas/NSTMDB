@@ -20,6 +20,7 @@
 //    [self.poster.image initWithData:movie.poster];
     self.title.text = movie.title;
     self.movieDescriptionLabel.text = movie.overview;
+    self.poster.image = [UIImage imageWithData: movie.poster];
     
     NSNumberFormatter *formatter = NSNumberFormatter.new;
     formatter.numberStyle = NSNumberFormatterDecimalStyle;

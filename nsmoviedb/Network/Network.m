@@ -34,13 +34,16 @@
 + (void) makePosterRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock {
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
+//        NSLog(@"data");
         //Create a block to handle the background thread in the dispatch method.
         void (^runAfterCompletion)(void) = ^void (void) {
             if (error) {
+//                NSLog(@"%@", error);
                 completionBlock (nil, error);
             } else {
-                NSLog(@"%@", data);
-                completionBlock(data, error);
+//                NSLog(@"%@", data);
+                NSData *_data = data;
+                completionBlock(_data, error);
             }
         };
         //Dispatch the queue
@@ -54,7 +57,7 @@
     static NSString* key = @"fb61737ab2cdee1c07a947778f249e7d";
     static NSString* popularURL = @"https://api.themoviedb.org/3/movie/popular?api_key=";
     NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", popularURL, key]];
-    
+//    NSLog(@"%@", url);
 //    [Network makeRequest: url
 //                  completion: ^(NSDictionary *data, NSError *error) {
 //                      if (error) {
@@ -83,11 +86,9 @@
 //                  }];
 }
 
-- (NSURL*) reqMoviePoster:(NSString *)movieId {
-    static NSString *key = @"fb61737ab2cdee1c07a947778f249e7d";
-    static NSString *keyAttr = @"/images?api_key=";
-    static NSString *prefix = @"https://api.themoviedb.org/3/movie/";
-    NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@%@", prefix, movieId, keyAttr, key]];
+- (NSURL*) reqMoviePoster:(NSString *) path {
+    static NSString *prefix = @"http://image.tmdb.org/t/p/w185";
+    NSURL *url = [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", prefix, path]];
     
     return url;
 }

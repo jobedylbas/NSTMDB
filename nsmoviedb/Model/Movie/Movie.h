@@ -12,7 +12,8 @@
 @interface Movie : NSObject
 
 @property (strong, nonatomic) NSData *poster;
-@property (nonatomic) NSNumber* tmdbId;
+@property (nonatomic) NSNumber *tmdbId;
+@property (nonatomic) NSString *posterPath;
 @property (strong, nonatomic) NSString *title;
 @property (nonatomic, copy, readwrite) NSString *overview;
 @property (strong, nonatomic) NSString *category;

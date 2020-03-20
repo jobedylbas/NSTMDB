@@ -37,7 +37,6 @@
         }
         
     }
-//    NSLog(@"%@", movies);
     return movies;
 }
 
@@ -45,25 +44,14 @@
     NSMutableArray *movies = [NSMutableArray array];
     Network *network = [[Network alloc] init];
     for (NSDictionary *movie in response[@"results"]) {
-        __block Movie *_newMovie = [[Movie alloc] init];
+        Movie *_newMovie = [[Movie alloc] init];
         NSString *desc = movie[@"overview"];
         NSArray *genreIds = movie[@"genre_ids"];
         NSString *genreString = @"";
         _newMovie.title = movie[@"original_title"];
         _newMovie.score = movie[@"vote_average"];
         _newMovie.tmdbId = movie[@"id"];
-        NSURL *url = [network reqMoviePoster: [_newMovie.tmdbId stringValue]];
-        NSLog(@"%@", url);
-//        [network makePosterRequest: url
-//                      completion: ^(NSData *data, NSError *error) {
-//                          if (error) {
-//                              NSLog(@"%@", [error localizedDescription]);
-//                          } else {
-//                              NSLog(@"data");
-//                              _newMovie.poster = data;
-//                          }
-//                      }];
-        
+        _newMovie.posterPath = movie[@"poster_path"];
         _newMovie.overview = desc;
         
         for(NSNumber *genreId in genreIds) {
