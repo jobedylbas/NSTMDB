@@ -35,6 +35,7 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
     [super viewDidLoad];
     self.network = Network.new;
     NSURL *url =[self.network reqNowPlayingMovies];
+    
     [Network makeRequest: url
                   completion: ^(NSDictionary *data, NSError *error) {
                       if (error) {
@@ -59,10 +60,8 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
                                             }
                                         }];
                           }
-                            
                       }
                   }];
-//    [self feedTableView];
 }
 
 - (Movie *)feedTableView: (NSInteger *) indexRow {
