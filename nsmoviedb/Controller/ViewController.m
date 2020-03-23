@@ -64,11 +64,21 @@ NSString *sectionName02 = @"Now Playing";
                           }
                       }
                   }];
+    [self setNavigationBar];
+}
+
+- (void) setNavigationBar {
+    UISearchController *searchC = UISearchController.new;
+    self.navigationItem.searchController = searchC;
+    searchC.delegate = self;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.movies filterUsingPredicate: @"SELF contains[c] 's'" ];
 }
 
 // Mark: TableView Functions
 - (Movie *)feedTableView: (NSInteger *) indexRow {
-    NSLog(@"%@",  self.movies);
     return self.movies[(NSInteger)indexRow];
 }
 
@@ -101,6 +111,10 @@ NSString *sectionName02 = @"Now Playing";
     } else {
         return @"";
     }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    view.tintColor = UIColor.whiteColor;
 }
 
 // Mark: Segue functions
