@@ -67,47 +67,6 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
 - (Movie *)feedTableView: (NSInteger *) indexRow {
     NSLog(@"%@",  self.movies);
     return self.movies[(NSInteger)indexRow];
-//    Movie *movie1 = Movie.new;
-//    movie1.title = @"Title 01";
-//    movie1.overview = @"My String";
-////    movie1.sinopse = @"Sinopse 01";
-////    movie1.story = @"Story 01";
-//    movie1.score = @7.1;
-//    movie1.poster = NSData.new;
-//
-//    Movie *movie2 = Movie.new;
-//    movie2.title = @"Title 02";
-//    movie2.overview = @"Descp 02";
-////    movie2.sinopse = @"Sinopse 02";
-////    movie2.story = @"Story 02";
-//    movie2.score= @7.2;
-//    movie2.poster = NSData.new;
-//
-//    Movie *movie3 = Movie.new;
-//    movie3.title = @"Title 03";
-//    movie3.overview = @"Descp 03";
-////    movie3.sinopse = @"Sinopse 03";
-////    movie3.story = @"Story 03";
-//    movie3.score = @7.3;
-//    movie3.poster = NSData.new;
-//
-//    switch ( (NSInteger) indexRow) {
-//        case 0:
-//            return movie1;
-//            break;
-//        case 1:
-//            return movie2;
-//            break;
-//        case 2:
-//            return movie3;
-//            break;
-//        default:
-//            return Movie.new;
-//            break;
-//    }
-//    [self.movies addObject:movie1];
-//    [self.movies addObject:movie2];
-//    [self.movies addObject:movie3];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -118,7 +77,6 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-//    [cell setData: [_movies objectAtIndex:indexPath.row]];
     [cell setData: [self feedTableView:indexPath.row]];
     return cell;
 }
