@@ -21,6 +21,7 @@
     self.title.text = movie.title;
     self.movieDescriptionLabel.text = movie.overview;
     self.poster.image = [UIImage imageWithData: movie.poster];
+    self.poster.layer.cornerRadius = 10;
     
     NSNumberFormatter *formatter = NSNumberFormatter.new;
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
