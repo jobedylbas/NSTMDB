@@ -30,6 +30,8 @@
 
 NSString *cellID = @"cellID";
 NSString *segueIdentifier = @"movieDetailSegueIdentifier";
+NSString *sectionName01 = @"Popular Movies";
+NSString *sectionName02 = @"Now Playing";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,23 +66,44 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
                   }];
 }
 
+// Mark: TableView Functions
 - (Movie *)feedTableView: (NSInteger *) indexRow {
     NSLog(@"%@",  self.movies);
     return self.movies[(NSInteger)indexRow];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [_movies count];
-    return self.movies.count;
+    NSInteger size = self.movies.count;
+    if (section == 0) {
+        return size > 2 ? 2 : size;
+    } else if (section == 1) {
+        return size > 2 ? size - 2 : 0;
+    }
+    return 0;
 }
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    [cell setData: [self feedTableView:indexPath.row]];
+    [cell setData: [self feedTableView: indexPath.section == 0 ? indexPath.row : indexPath.row + 2]];
     return cell;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return sectionName01;
+    } else if (section == 1) {
+        return sectionName02;
+    } else {
+        return @"";
+    }
+}
+
+// Mark: Segue functions
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueIdentifier]) {
         MovieDetailsViewController *mdvc = [segue destinationViewController];
