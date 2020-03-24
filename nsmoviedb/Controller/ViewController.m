@@ -18,6 +18,8 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) NSMutableArray<Movie *> *movies;
+@property (strong, nonatomic) NSMutableArray<Movie *> *tableViewMovieSource;
+
 @property (strong, nonatomic) NSData *image;
 @property (strong, nonatomic) NSDictionary *response;
 @property (strong, nonatomic) NSString *errorMessage;
@@ -35,6 +37,7 @@ NSString *sectionName02 = @"Now Playing";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationBar];
     self.network = Network.new;
     NSURL *url =[self.network reqNowPlayingMovies];
     
