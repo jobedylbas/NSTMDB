@@ -13,7 +13,7 @@
 
 @implementation Parser
 
-- (NSMutableArray*) popularMovies: (NSDictionary*) response {
++ (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres {
     NSMutableArray *movies = [NSMutableArray array];
     Movie *_newMovie = [[Movie alloc] init];
     int counter = 0;
@@ -29,7 +29,7 @@
             
             NSString *genreString = @"";
             for(NSNumber *genreId in genreIds) {
-                NSString *genreName = [Parser genreName: genreId];
+                NSString *genreName = [Parser genreName: genreId genresDic: genres];
                 genreString = [genreString stringByAppendingString: [genreName stringByAppendingString: @", "]];
                 _newMovie.category = genreString;
             }
@@ -67,51 +67,13 @@
     return movies;
 }
 
-+ (NSString*) genreName: (NSNumber*) genreId {
-//    NSString *genreString = @"";
-    switch ([genreId intValue]) {
-        case 28:
-            return @"Action";
-        case 16:
-            return @"Animated";
-        case 99:
-            return @"Documentary";
-        case 18:
-            return @"Drama";
-        case 10751:
-            return @"Family";
-        case 14:
-            return @"Fantasy";
-        case 36:
-            return @"History";
-        case 35:
-           return @"Comedy";
-        case 10752:
-            return  @"War";
-        case 80:
-            return @"Crime,";
-        case 10402:
-            return @"Music";
-        case 9648:
-            return  @"Mystery";
-        case 10749:
-            return @"Romance";
-        case 878:
-            return @"Sci-fi";
-        case 27:
-            return @"Horror";
-        case 10770:
-            return  @"TV Movie";
-        case 53:
-            return  @"Thriller";
-        case 37:
-            return @"Western";
-        case 12:
-            return @"Adventure";
-        default:
-           return @"";
-
++ (NSString*) genreName: (NSNumber*) genreId genresDic: (NSMutableArray*) genres {
+    for(int i=0; i < genres.count; i++) {
+        if(genreId == genres[i][@"id"]) {
+            return genres[i][@"name"];
+        }
     }
+    return @"";
 }
 
 

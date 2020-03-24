@@ -13,8 +13,8 @@
 //@property (strong, nonatomic) Network *network;
 //@property (strong, nonatomic) NSArray<Movie> *popularMovies;
 //@property (strong, nonatomic) NSArray<Movie> *nowPlayingMovies;
-//@property (strong, nonatomic) NSData *poster;
-- (NSMutableArray*) popularMovies: (NSDictionary*) response;
+@property (strong, nonatomic) NSDictionary *genres;
++ (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres;
 
 - (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response;
 
