@@ -66,27 +66,48 @@ NSString *sectionName02 = @"Now Playing";
                                         }];
                           }
                       }
+        self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
                   }];
-    [self setNavigationBar];
 }
 
 - (void) setNavigationBar {
-    UISearchController *searchC = UISearchController.new;
-    self.navigationItem.searchController = searchC;
-    searchC.delegate = self;
+    UISearchController *searchController = UISearchController.new;
+    self.navigationItem.searchController = searchController;
+    searchController.searchBar.delegate = self;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self.movies filterUsingPredicate: @"SELF contains[c] 's'" ];
+    self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+    [self filterDataArray:searchText];
+    [self.tableView reloadData];
+//    [self.movies filterUsingPredicate: @"SELF contains[c] 's'" ];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+    [self.tableView reloadData];
+}
+
+- (void) filterDataArray:(NSString *)substring {
+    if (substring.length == 0) { return; }
+    substring = substring.lowercaseString;
+    NSMutableArray <Movie *> *aux = NSMutableArray.new;
+    self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+    for ( Movie * movie in self.tableViewMovieSource) {
+        if ([movie.title.lowercaseString containsString:substring]) {
+            [aux addObject: movie];
+        }
+    }
+    self.tableViewMovieSource = aux;
 }
 
 // Mark: TableView Functions
 - (Movie *)feedTableView: (NSInteger *) indexRow {
-    return self.movies[(NSInteger)indexRow];
+    return self.tableViewMovieSource[(NSInteger)indexRow];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger size = self.movies.count;
+    NSInteger size = self.tableViewMovieSource.count;
     if (section == 0) {
         return size > 2 ? 2 : size;
     } else if (section == 1) {
@@ -94,7 +115,6 @@ NSString *sectionName02 = @"Now Playing";
     }
     return 0;
 }
-
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
