@@ -114,7 +114,7 @@ NSString *sectionName02 = @"Now Playing";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    view.tintColor = UIColor.whiteColor;
+    view.tintColor = UIColor.systemBackgroundColor;
 }
 
 // Mark: Segue functions
