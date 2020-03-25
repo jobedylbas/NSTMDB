@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Movie.h"
 #import "TableViewCell.h"
-#import "ViewModel.h"
+#import "MovieDBService.h"
 #import "MovieDetailsViewController.h"
 #import <Foundation/Foundation.h>
 
@@ -17,7 +17,7 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) NSMutableArray<Movie *> *movies;
-@property (strong, nonatomic) ViewModel *viewModel;
+@property (strong, nonatomic) MovieDBService *viewModel;
 @end
 
 @implementation ViewController
@@ -27,7 +27,7 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewModel = ViewModel.new;
+    self.viewModel = MovieDBService.new;
     
     [self.viewModel reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
                       if (error) {

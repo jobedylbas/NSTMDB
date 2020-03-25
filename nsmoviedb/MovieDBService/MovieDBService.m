@@ -1,5 +1,5 @@
 //
-//  ViewModel.m
+//  MovieDBService.m
 //  nsmoviedb
 //
 //  Created by Jobe Diego Dylbas dos Santos on 23/03/20.
@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewModel.h"
+#import "MovieDBService.h"
 #import "Network.h"
 #import "Parser.h"
 #import "Movie.h"
 
 
-@implementation ViewModel
+@implementation MovieDBService
 - (NSURL*) popularMoviesURL {
     return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, POPULAR_URL, KEY]];
 }

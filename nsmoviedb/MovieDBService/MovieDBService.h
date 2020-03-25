@@ -1,13 +1,13 @@
 //
-//  ViewModel.h
+//  MovieDBService.h
 //  nsmoviedb
 //
 //  Created by Jobe Diego Dylbas dos Santos on 23/03/20.
 //  Copyright © 2020 Jobe Diego Dylbas dos Santos. All rights reserved.
 //
 
-#ifndef ViewModel_h
-#define ViewModel_h
+#ifndef MovieDBService_h
+#define MovieDBService_h
 
 #define KEY @"?api_key=fb61737ab2cdee1c07a947778f249e7d"
 #define BASE_URL @"https://api.themoviedb.org/"
@@ -17,7 +17,7 @@
 #define GENRE_URL @"3/genre/movie/list"
 
 
-@interface ViewModel: NSObject
+@interface MovieDBService: NSObject
 
 - (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock;
 
@@ -25,4 +25,4 @@
 
 @end
 
-#endif /* ViewModel_h */
+#endif /* MovieDBService_h */
