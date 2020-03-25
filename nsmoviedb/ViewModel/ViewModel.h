@@ -9,11 +9,12 @@
 #ifndef ViewModel_h
 #define ViewModel_h
 
-#define KEY @"fb61737ab2cdee1c07a947778f249e7d"
-#define POPULAR_URL @"https://api.themoviedb.org/3/movie/popular?api_key="
-#define NOWPLAYING_URL @"https://api.themoviedb.org/3/movie/now_playing?api_key="
-#define POSTER_URL @"http://image.tmdb.org/t/p/w185"
-#define GENRE_URL @"https://api.themoviedb.org/3/genre/movie/list?api_key="
+#define KEY @"?api_key=fb61737ab2cdee1c07a947778f249e7d"
+#define PREFIX_URL @"https://api.themoviedb.org/"
+#define POPULAR_URL @"3/movie/popular"
+#define NOWPLAYING_URL @"3/movie/now_playing"
+#define POSTER_URL @"t/p/w185"
+#define GENRE_URL @"3/genre/movie/list"
 
 
 @interface ViewModel: NSObject
