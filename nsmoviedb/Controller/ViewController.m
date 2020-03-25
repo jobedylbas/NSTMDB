@@ -102,7 +102,7 @@ NSString *sectionName02 = @"Now Playing";
 }
 
 // Mark: TableView Functions
-- (Movie *)feedTableView: (NSInteger *) indexRow {
+- (Movie *)feedTableView: (NSInteger) indexRow {
     return self.tableViewMovieSource[(NSInteger)indexRow];
 }
 
@@ -140,13 +140,17 @@ NSString *sectionName02 = @"Now Playing";
     view.tintColor = UIColor.systemBackgroundColor;
 }
 
+NSInteger currentIndex = 0;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    currentIndex = indexPath.row + indexPath.section*2;
+    [self performSegueWithIdentifier:segueIdentifier sender:nil];
+}
+
 // Mark: Segue functions
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueIdentifier]) {
         MovieDetailsViewController *mdvc = [segue destinationViewController];
-        NSInteger *row = [[self tableView] indexPathForSelectedRow].row;
-        row = row == nil ? 0 : row;
-        mdvc.movie = [self feedTableView:row];
+        mdvc.movie = [self feedTableView:currentIndex];
     }
 }
 
