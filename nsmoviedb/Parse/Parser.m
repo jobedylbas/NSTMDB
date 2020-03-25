@@ -13,7 +13,7 @@
 
 @implementation Parser
 
-+ (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres {
++ (NSMutableArray*) parseMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres {
     NSMutableArray *movies = [NSMutableArray array];
 
     for (NSDictionary *movie in response[@"results"]) {
@@ -33,33 +33,6 @@
         }
         [movies addObject:_newMovie];
     }
-    return movies;
-}
-
-- (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response {
-    NSMutableArray *movies = [NSMutableArray array];
-
-    for (NSDictionary *movie in response[@"results"]) {
-        Movie *_newMovie = [[Movie alloc] init];
-        NSString *desc = movie[@"overview"];
-        NSArray *genreIds = movie[@"genre_ids"];
-        NSString *genreString = @"";
-        _newMovie.title = movie[@"original_title"];
-        _newMovie.score = movie[@"vote_average"];
-        _newMovie.tmdbId = movie[@"id"];
-        _newMovie.posterPath = movie[@"poster_path"];
-        _newMovie.overview = desc;
-        
-        for(NSNumber *genreId in genreIds) {
-            NSString *genreName = [Parser genreName: genreId];
-            genreString = [genreString stringByAppendingString: [genreName stringByAppendingString: @", "]];
-            
-            _newMovie.category = genreString;
-        }
-        
-        [movies addObject:_newMovie];
-    }
-//    NSLog(@"%@", movies);
     return movies;
 }
 
