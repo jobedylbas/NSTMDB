@@ -30,8 +30,6 @@
     return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", POSTER_URL, path]];
 }
 
-
-
 - (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
     __block Parser *parser = Parser.new;
     __block NSMutableArray *movies;
