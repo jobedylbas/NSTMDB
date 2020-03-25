@@ -12,7 +12,7 @@
 
 + (NSMutableArray*) parseMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres;
 
-+ (NSString*) genreName: (NSNumber*) genreId;
++ (NSString*) genreName: (NSNumber*) genreId genresDic: (NSMutableArray*) genres;
 
 @end
 
