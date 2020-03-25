@@ -24,7 +24,7 @@
 - (void)setData {
     if ([self movie] != nil) {
         self.posterImage.image = [UIImage imageWithData: self.movie.poster];
-//        [[self posterImage].image initWithData: [self movie].poster];
+        self.posterImage.layer.cornerRadius = 10;
         [self movieTitle].text = [self movie].title;
         [self category].text = [self movie].category;
         [self rating].text = [self movie].score.stringValue;
