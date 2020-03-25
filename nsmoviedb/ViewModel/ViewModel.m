@@ -15,23 +15,22 @@
 
 @implementation ViewModel
 - (NSURL*) popularMoviesURL {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", POPULAR_URL, KEY]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, POPULAR_URL, KEY]];
 }
 
 - (NSURL*) nowPlayingMoviesURL {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", NOWPLAYING_URL, KEY]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL,NOWPLAYING_URL, KEY]];
 }
 
 - (NSURL*) genreURL {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", GENRE_URL, KEY]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, GENRE_URL, KEY]];
 }
 
 - (NSURL*) moviePosterURL: (NSString *) path {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", POSTER_URL, path]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, POSTER_URL, path]];
 }
 
 - (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
-    __block Parser *parser = Parser.new;
     __block NSMutableArray *movies;
     
     [Network makeRequest: [self popularMoviesURL]
@@ -68,7 +67,6 @@
 }
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
-    Parser *parser = Parser.new;
     
     [Network makeRequest: [self nowPlayingMoviesURL]
                   completion: ^(NSDictionary *data, NSError *error) {

@@ -10,7 +10,7 @@
 #define ViewModel_h
 
 #define KEY @"?api_key=fb61737ab2cdee1c07a947778f249e7d"
-#define PREFIX_URL @"https://api.themoviedb.org/"
+#define BASE_URL @"https://api.themoviedb.org/"
 #define POPULAR_URL @"3/movie/popular"
 #define NOWPLAYING_URL @"3/movie/now_playing"
 #define POSTER_URL @"t/p/w185"
@@ -22,14 +22,6 @@
 - (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock;
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *))completionBlock;
-
-- (NSURL*) popularMoviesURL;
-
-- (NSURL*) nowPlayingMoviesURL;
-
-- (NSURL*) moviePosterURL: (NSString*) movieId;
-
-
 
 @end
 
