@@ -15,9 +15,10 @@
 
 + (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres {
     NSMutableArray *movies = [NSMutableArray array];
-    Movie *_newMovie = [[Movie alloc] init];
+    
     int counter = 0;
     for (NSDictionary *movie in response[@"results"]) {
+        Movie *_newMovie = [[Movie alloc] init];
         if (counter < 2) {
             counter++;
             _newMovie.title = movie[@"original_title"];
@@ -75,6 +76,5 @@
     }
     return @"";
 }
-
 
 @end
