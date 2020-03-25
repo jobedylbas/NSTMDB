@@ -14,9 +14,7 @@
 //@property (strong, nonatomic) NSArray<Movie> *popularMovies;
 //@property (strong, nonatomic) NSArray<Movie> *nowPlayingMovies;
 @property (strong, nonatomic) NSDictionary *genres;
-+ (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres;
-
-- (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response;
++ (NSMutableArray*) parseMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres;
 
 + (NSString*) genreName: (NSNumber*) genreId;
 

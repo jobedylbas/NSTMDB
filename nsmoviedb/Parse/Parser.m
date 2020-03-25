@@ -42,7 +42,7 @@
             return genres[i][@"name"];
         }
     }
-    return @"";
+    return nil;
 }
 
 @end
