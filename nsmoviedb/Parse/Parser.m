@@ -15,28 +15,23 @@
 
 + (NSMutableArray*) popularMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres {
     NSMutableArray *movies = [NSMutableArray array];
-    
-    int counter = 0;
+
     for (NSDictionary *movie in response[@"results"]) {
-        Movie *_newMovie = [[Movie alloc] init];
-        if (counter < 2) {
-            counter++;
-            _newMovie.title = movie[@"original_title"];
-            _newMovie.score = movie[@"vote_average"];
-            _newMovie.tmdbId = movie[@"id"];
-            NSString *desc = movie[@"overview"];
-            _newMovie.overview = desc;
-            NSArray *genreIds = movie[@"genre_ids"];
-            
-            NSString *genreString = @"";
-            for(NSNumber *genreId in genreIds) {
-                NSString *genreName = [Parser genreName: genreId genresDic: genres];
-                genreString = [genreString stringByAppendingString: [genreName stringByAppendingString: @", "]];
-                _newMovie.category = genreString;
-            }
-            [movies addObject:_newMovie];
-        }
+        Movie *_newMovie = Movie.new;
+        _newMovie.title = movie[@"original_title"];
+        _newMovie.score = movie[@"vote_average"];
+        _newMovie.tmdbId = movie[@"id"];
+        NSString *desc = movie[@"overview"];
+        _newMovie.overview = desc;
+        NSArray *genreIds = movie[@"genre_ids"];
         
+        NSString *genreString = @"";
+        for(NSNumber *genreId in genreIds) {
+            NSString *genreName = [Parser genreName: genreId genresDic: genres];
+            genreString = [genreString stringByAppendingString: [genreName stringByAppendingString: @", "]];
+            _newMovie.category = genreString;
+        }
+        [movies addObject:_newMovie];
     }
     return movies;
 }
