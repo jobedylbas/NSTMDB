@@ -41,7 +41,7 @@ NSString *segueIdentifier = @"movieDetailSegueIdentifier";
 }
 
 - (Movie *)feedTableView: (NSInteger *) indexRow {
-    NSLog(@"%@",  self.movies);
+//    NSLog(@"%@",  self.movies);
     
     return self.movies[(NSInteger)indexRow];
 }

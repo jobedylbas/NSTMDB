@@ -13,7 +13,7 @@
 #define BASE_URL @"https://api.themoviedb.org/"
 #define POPULAR_URL @"3/movie/popular"
 #define NOWPLAYING_URL @"3/movie/now_playing"
-#define POSTER_URL @"t/p/w185"
+#define POSTER_URL @"http://image.tmdb.org/t/p/w185"
 #define GENRE_URL @"3/genre/movie/list"
 
 

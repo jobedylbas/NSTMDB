@@ -24,6 +24,7 @@
         NSString *desc = movie[@"overview"];
         _newMovie.overview = desc;
         _newMovie.categories = movie[@"genre_ids"];
+        _newMovie.posterPath = movie[@"poster_path"];
 //        NSString *genreString = @"";
 //        for(NSNumber *genreId in genreIds) {
 //            NSString *genreName = [Parser genreName: genreId genresDic: genres];

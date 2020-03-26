@@ -19,7 +19,7 @@
 }
 
 - (NSURL*) nowPlayingMoviesURL {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL,NOWPLAYING_URL, KEY]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, NOWPLAYING_URL, KEY]];
 }
 
 - (NSURL*) genreURL {
@@ -27,7 +27,7 @@
 }
 
 - (NSURL*) moviePosterURL: (NSString *) path {
-    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, POSTER_URL, path]];
+    return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@", POSTER_URL, path]];
 }
 
 - (void) makeMoviesRequest: (NSURL*) url handler: (void (^)(NSMutableArray*, NSError *)) completionBlock {
@@ -50,6 +50,7 @@
                                                     NSLog(@"%@", [error localizedDescription]);
                                                     completionBlock(movies, error);
                                                 } else {
+                                                    NSLog(@"%@", [self moviePosterURL: movie.posterPath]);
                                                   movie.poster = posterData;
                                                   i++;
                                                   if(i == movies.count - 1) {
