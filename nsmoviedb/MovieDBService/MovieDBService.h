@@ -24,8 +24,6 @@
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *))completionBlock;
 
-//- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock;
-
 - (void) getMovieGenre: (Movie*) movie handler: (void (^)(NSError *))completionBlock;
 
 @end

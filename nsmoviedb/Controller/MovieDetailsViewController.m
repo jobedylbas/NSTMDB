@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     MovieDBService *movieDBService = MovieDBService.new;
-    // Do any additional setup after loading the view.
     [movieDBService getMovieGenre: self.movie handler:^(NSError *error) {
         if(error) {
             NSLog(@"%@", [error localizedDescription]);

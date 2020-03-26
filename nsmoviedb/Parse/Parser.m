@@ -26,12 +26,6 @@
         _newMovie.categoriesIds = movie[@"genre_ids"];
         _newMovie.posterPath = movie[@"poster_path"];
         _newMovie.categories = NSMutableArray.new;
-//        NSString *genreString = @"";
-//        for(NSNumber *genreId in genreIds) {
-//            NSString *genreName = [Parser genreName: genreId genresDic: genres];
-//            genreString = [genreString stringByAppendingString: [genreName stringByAppendingString: @", "]];
-//            _newMovie.category = genreString;
-//        }
         [movies addObject:_newMovie];
     }
     return movies;

@@ -11,14 +11,7 @@
 
 @implementation TableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-    
-}
-
 - (void)setData: (Movie *) movie {
-//    [self.poster.image initWithData:movie.poster];
     self.title.text = movie.title;
     self.movieDescriptionLabel.text = movie.overview;
     self.poster.image = [UIImage imageWithData: movie.poster];
@@ -28,12 +21,6 @@
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     formatter.maximumFractionDigits = 1;
     self.rating.text = [formatter stringFromNumber:movie.score];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
 
 @end
