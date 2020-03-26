@@ -37,26 +37,30 @@ NSString *sectionName02 = @"Now Playing";
     self.movies = NSMutableArray.new;
     self.movieDBService = MovieDBService.new;
     [self setNavigationBar];
+    [self setNetworking];
+}
+
+- (void)setNetworking {
     [self.movieDBService reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
-                      if (error) {
-                          NSLog(@"%@", [error localizedDescription]);
-                      } else {
-                          [self.movies addObject: data[0]];
-                          [self.movies addObject: data[1]];
-                          [self.movieDBService reqNowPlayingMovies: ^(NSMutableArray *data, NSError *error) {
-                              if (error) {
-                                  NSLog(@"%@", [error localizedDescription]);
-                              } else {
-                                  [self.movies addObjectsFromArray: data];
-                                  
-                                  self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
-                                  
-                                  [self.tableView reloadData];
-                              }
-                          }];
-                          
-                      }
-                  }];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            [self.movies addObject: data[0]];
+            [self.movies addObject: data[1]];
+            [self.movieDBService reqNowPlayingMovies: ^(NSMutableArray *data, NSError *error) {
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                } else {
+                    [self.movies addObjectsFromArray: data];
+                    
+                    self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+                    
+                    [self.tableView reloadData];
+                }
+            }];
+            
+        }
+    }];
 }
 
 - (void) setNavigationBar {
@@ -69,7 +73,6 @@ NSString *sectionName02 = @"Now Playing";
     self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
     [self filterDataArray:searchText];
     [self.tableView reloadData];
-//    [self.movies filterUsingPredicate: @"SELF contains[c] 's'" ];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -91,7 +94,7 @@ NSString *sectionName02 = @"Now Playing";
 }
 
 // Mark: TableView Functions
-- (Movie *)feedTableView: (NSInteger *) indexRow {
+- (Movie *)feedTableView: (NSInteger) indexRow {
     return self.movies[(NSInteger)indexRow];
 }
 
