@@ -10,7 +10,7 @@
 #define Parse_h
 @interface Parser : NSObject
 
-+ (NSMutableArray*) parseMovies: (NSDictionary*) response genresDic: (NSMutableArray*) genres;
++ (NSMutableArray*) parseMovies: (NSDictionary*) response;
 
 + (NSString*) genreName: (NSNumber*) genreId genresDic: (NSMutableArray*) genres;
 

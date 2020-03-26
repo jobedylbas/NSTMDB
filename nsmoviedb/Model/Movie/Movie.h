@@ -16,7 +16,7 @@
 @property (nonatomic) NSString *posterPath;
 @property (strong, nonatomic) NSString *title;
 @property (nonatomic, copy, readwrite) NSString *overview;
-@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSMutableArray *categories;
 @property (nonatomic) NSNumber *score;
 
 

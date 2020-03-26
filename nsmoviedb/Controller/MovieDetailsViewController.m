@@ -26,7 +26,7 @@
         self.posterImage.image = [UIImage imageWithData: self.movie.poster];
 //        [[self posterImage].image initWithData: [self movie].poster];
         [self movieTitle].text = [self movie].title;
-        [self category].text = [self movie].category;
+        [self category].text = [self movie].categories;
         [self rating].text = [self movie].score.stringValue;
         [self overview].text = [self movie].overview;
     }

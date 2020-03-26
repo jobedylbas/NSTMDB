@@ -15,9 +15,7 @@
 @property (strong, nonatomic) NSDictionary *response;
 @property (strong, nonatomic) NSString *errorMessage;
 
-+ (void) makeRequest: (NSURL*) url completion:(void (^)(NSDictionary *, NSError *))completionBlock;
-
-+ (void) makePosterRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock;
++ (void) makeRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock;
 
 @end
 

@@ -23,6 +23,8 @@
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *))completionBlock;
 
+- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock;
+
 @end
 
 #endif /* MovieDBService_h */

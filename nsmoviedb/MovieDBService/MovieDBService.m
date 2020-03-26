@@ -30,69 +30,78 @@
     return [[NSURL alloc]initWithString: [NSString stringWithFormat:@"%@%@%@", BASE_URL, POSTER_URL, path]];
 }
 
-- (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
+- (void) makeMoviesRequest: (NSURL*) url handler: (void (^)(NSMutableArray*, NSError *)) completionBlock {
     __block NSMutableArray *movies;
     
-    [Network makeRequest: [self popularMoviesURL]
-                  completion: ^(NSDictionary *moviesDic, NSError *error) {
+    [Network makeRequest: url
+              completion: ^(NSData *moviesData, NSError *error) {
                       if (error) {
                           NSLog(@"%@", [error localizedDescription]);
+                          completionBlock(nil, error);
                       } else {
-                          [Network makeRequest: [self genreURL]
-                                    completion: ^(NSDictionary *data, NSError *error) {
-                              if (error) { NSLog(@"%@", [error localizedDescription]); }
-                              else {
-                                  movies = [Parser parseMovies: moviesDic
-                                                           genresDic: data[@"genres"]];
-//                                  NSLog(@"%@", movies);
-                                  __block int i = 0;
-                                  for(Movie *movie in movies) {
-                                      [Network makePosterRequest: [self moviePosterURL: movie.posterPath]
-                                                      completion: ^(NSData *data, NSError *error) {
-                                                        if (error) {
-                                                            NSLog(@"%@", [error localizedDescription]);
-                                                        } else {
-                                                          movie.poster = data;
-                                                          NSLog(@"%i", i);
-                                                          i = i + 1;
-                                                          if(i == movies.count - 1) {
-                                                              completionBlock(movies, error);
-                                                          }
-                                                        }
-                                                    }];
-                                  }
-                              }
-                          }];
-                      }}];
+                          NSDictionary *moviesDic = [NSJSONSerialization JSONObjectWithData:moviesData options:NSJSONReadingMutableLeaves error:nil];
+                          movies = [Parser parseMovies: moviesDic];
+                          __block int i = 0;
+                          for(Movie *movie in movies) {
+                              // TODO: - Para cada movie, antes de liberar para que o usuário possa ver os filmes, estamos fazendo o request de buscar a imagem. Se a lista for enorme, isso pode demorar bastante e pode ser que o usuário nunca faça o scroll até a última célula da tabela. Não podemos fazer esse request somente quando o usuário passar na célula?
+                              [Network makeRequest: [self moviePosterURL: movie.posterPath]
+                                              completion: ^(NSData *posterData, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", [error localizedDescription]);
+                                                    completionBlock(movies, error);
+                                                } else {
+                                                  movie.poster = posterData;
+                                                  i++;
+                                                  if(i == movies.count - 1) {
+                                                      completionBlock(movies, error);
+                                                  }
+                                                }
+                                            }];
+                            }
+                        }
+    }];
+}
+
+
+- (void) reqPopularMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
+    [self makeMoviesRequest: [self popularMoviesURL]
+                     handler: ^(NSMutableArray *data, NSError *error) {
+                        if(error) {
+                            NSLog(@"%@", [error localizedDescription]);
+                            completionBlock(data, error);
+                        }
+                        else {
+                            completionBlock(data, error);
+                        }
+                    }
+     ];
 }
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *)) completionBlock {
-    
-    [Network makeRequest: [self nowPlayingMoviesURL]
-                  completion: ^(NSDictionary *data, NSError *error) {
-                      if (error) {
-                          NSLog(@"%@", [error localizedDescription]);
-                      } else {
-                          NSMutableArray *movies = [Parser parseMovies: data
-                                                             genresDic: data];
-                          __block int i = 0;
-                          for(Movie *movie in movies) {
-                              [Network makePosterRequest: [self moviePosterURL: movie.posterPath]
-                                        completion: ^(NSData *data, NSError *error) {
-                                            if (error) {
-                                                NSLog(@"%@", [error localizedDescription]);
-                                            } else {
-                                                movie.poster = data;
-                                                NSLog(@"%i", i);
-                                                i = i + 1;
-                                                if(i == movies.count - 1) {
-                                                    completionBlock(movies, error);
-                                                }
-                                            }
-                                        }];
-                          }
-                      }
-                  }];
+    [self makeMoviesRequest: [self nowPlayingMoviesURL]
+                     handler: ^(NSMutableArray *data, NSError *error) {
+                        if(error) {
+                            NSLog(@"%@", [error localizedDescription]);
+                            completionBlock(data, error);
+                        }
+                        else {
+                            completionBlock(data, error);
+                        }
+                    }
+     ];
+}
+
+- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock {
+    [Network makeRequest: [self genreURL]
+        completion: ^(NSData *moviesData, NSError *error) {
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                    completionBlock(nil, error);
+                } else {
+                    NSDictionary *jsonGenres = [NSJSONSerialization JSONObjectWithData:moviesData options:NSJSONReadingMutableLeaves error:nil];
+                    completionBlock(jsonGenres[@"genres"], error);
+                }
+    }];
 }
 
 

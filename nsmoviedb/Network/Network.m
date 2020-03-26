@@ -12,25 +12,7 @@
 #import "Network.h"
 
 @implementation Network
-+ (void) makeRequest: (NSURL*) url completion:(void (^)(NSDictionary *, NSError *))completionBlock {
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-    {
-        //Create a block to handle the background thread in the dispatch method.
-        void (^runAfterCompletion)(void) = ^void (void) {
-            if (error) {
-                completionBlock (nil, error);
-            } else {
-                NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-                completionBlock(jsonObject, error);
-            }
-        };
-        //Dispatch the queue
-        dispatch_async(dispatch_get_main_queue(), runAfterCompletion);
-       }];
-        [task resume]; // to start the download task
-}
-
-+ (void) makePosterRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock {
++ (void) makeRequest: (NSURL*) url completion:(void (^)(NSData *, NSError *))completionBlock {
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         //Create a block to handle the background thread in the dispatch method.
@@ -42,6 +24,7 @@
             }
         };
         //Dispatch the queue
+        // TODO: - AMW: Aqui vocês já estão voltando pra main antes de fazer o parsing. Vocês podem discutir de quem é a responsabilidade de fazer isso.
         dispatch_async(dispatch_get_main_queue(), runAfterCompletion);
        }];
         [task resume]; // to start the download task
