@@ -22,10 +22,7 @@
 @property (strong, nonatomic) NSData *image;
 @property (strong, nonatomic) NSDictionary *response;
 @property (strong, nonatomic) NSString *errorMessage;
-//@property (strong, nonatomic) NSArray *movies;
-@property (strong, nonatomic) Parser *parser;
-@property (strong, nonatomic) Network *network;
-@property (strong, nonatomic) MovieDBService *viewModel;
+@property (strong, nonatomic) MovieDBService *movieDBService;
 @end
 
 @implementation ViewController
@@ -37,16 +34,26 @@ NSString *sectionName02 = @"Now Playing";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewModel = MovieDBService.new;
+    self.movies = NSMutableArray.new;
+    self.movieDBService = MovieDBService.new;
     
-    [self.viewModel reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
+    [self.movieDBService reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
                       if (error) {
                           NSLog(@"%@", [error localizedDescription]);
                       } else {
-                          self.movies = data;
-                          [self.tableView reloadData];
+                          [self.movies addObject: data[0]];
+                          [self.movies addObject: data[1]];
+                          [self.movieDBService reqNowPlayingMovies: ^(NSMutableArray *data, NSError *error) {
+                              if (error) {
+                                  NSLog(@"%@", [error localizedDescription]);
+                              } else {
+                                  [self.movies addObjectsFromArray: data];
+                                  self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+                                  [self.tableView reloadData];
+                              }
+                          }];
+                          
                       }
-        self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
                   }];
 }
 

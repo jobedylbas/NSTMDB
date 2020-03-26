@@ -50,7 +50,7 @@
                                                     NSLog(@"%@", [error localizedDescription]);
                                                     completionBlock(movies, error);
                                                 } else {
-                                                    NSLog(@"%@", [self moviePosterURL: movie.posterPath]);
+//                                                    NSLog(@"%@", [self moviePosterURL: movie.posterPath]);
                                                   movie.poster = posterData;
                                                   i++;
                                                   if(i == movies.count - 1) {
