@@ -9,8 +9,7 @@
 #import "ViewController.h"
 #import "Movie.h"
 #import "TableViewCell.h"
-#import "Network.h"
-#import "Parser.h"
+#import "MovieDBService.h"
 #import "MovieDetailsViewController.h"
 #import <Foundation/Foundation.h>
 
@@ -26,6 +25,7 @@
 //@property (strong, nonatomic) NSArray *movies;
 @property (strong, nonatomic) Parser *parser;
 @property (strong, nonatomic) Network *network;
+@property (strong, nonatomic) MovieDBService *viewModel;
 @end
 
 @implementation ViewController
@@ -37,34 +37,14 @@ NSString *sectionName02 = @"Now Playing";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBar];
-    self.network = Network.new;
-    NSURL *url =[self.network reqNowPlayingMovies];
+    self.viewModel = MovieDBService.new;
     
-    [Network makeRequest: url
-                  completion: ^(NSDictionary *data, NSError *error) {
+    [self.viewModel reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
                       if (error) {
-                          self.errorMessage = [error localizedDescription];
+                          NSLog(@"%@", [error localizedDescription]);
                       } else {
-                          self.response = data;
-                          self.parser = [[Parser alloc] init];
-                          self.movies = [self.parser nowPlayingMovies: data];
-                          __block int i = 0;
-                          for(Movie *movie in self.movies) {
-                              [Network makePosterRequest: [self.network reqMoviePoster: movie.posterPath]
-                                        completion: ^(NSData *data, NSError *error) {
-                                            if (error) {
-                                                NSLog(@"%@", [error localizedDescription]);
-                                            } else {
-                                                movie.poster = data;
-                                                NSLog(@"%i", i);
-                                                i = i + 1;
-                                                if(i == self.movies.count - 1) {
-                                                    [self.tableView reloadData];
-                                                }
-                                            }
-                                        }];
-                          }
+                          self.movies = data;
+                          [self.tableView reloadData];
                       }
         self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
                   }];
@@ -102,8 +82,8 @@ NSString *sectionName02 = @"Now Playing";
 }
 
 // Mark: TableView Functions
-- (Movie *)feedTableView: (NSInteger) indexRow {
-    return self.tableViewMovieSource[(NSInteger)indexRow];
+- (Movie *)feedTableView: (NSInteger *) indexRow {
+    return self.movies[(NSInteger)indexRow];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

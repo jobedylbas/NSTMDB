@@ -13,6 +13,7 @@
 		469FCEA12423E08800605AA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469FCE9B2423E08800605AA0 /* ViewController.m */; };
 		469FCEA72423E1ED00605AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469FCEA32423E1ED00605AA0 /* LaunchScreen.storyboard */; };
 		469FCEA82423E1ED00605AA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469FCEA52423E1ED00605AA0 /* Main.storyboard */; };
+		46AC89012429263500851288 /* MovieDBService.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AC89002429263500851288 /* MovieDBService.m */; };
 		46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04A9241FF4D90047057C /* AppDelegate.m */; };
 		46CA04AD241FF4D90047057C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CA04AC241FF4D90047057C /* SceneDelegate.m */; };
 		46CA04B5241FF4DC0047057C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46CA04B4241FF4DC0047057C /* Assets.xcassets */; };
@@ -34,6 +35,8 @@
 		469FCE9E2423E08800605AA0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		469FCEA42423E1ED00605AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		469FCEA62423E1ED00605AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46AC89002429263500851288 /* MovieDBService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDBService.m; sourceTree = "<group>"; };
+		46AC89022429264000851288 /* MovieDBService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDBService.h; sourceTree = "<group>"; };
 		46CA04A5241FF4D90047057C /* nsmoviedb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nsmoviedb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CA04A8241FF4D90047057C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46CA04A9241FF4D90047057C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -101,6 +104,15 @@
 			path = nsmoviedb/View;
 			sourceTree = SOURCE_ROOT;
 		};
+		46AC88FF2429261900851288 /* MovieDBService */ = {
+			isa = PBXGroup;
+			children = (
+				46AC89022429264000851288 /* MovieDBService.h */,
+				46AC89002429263500851288 /* MovieDBService.m */,
+			);
+			path = MovieDBService;
+			sourceTree = "<group>";
+		};
 		46CA049C241FF4D90047057C = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 				46CA04AB241FF4D90047057C /* SceneDelegate.h */,
 				46CA04AC241FF4D90047057C /* SceneDelegate.m */,
 				4659960924213CAF00D3074E /* Parse */,
+				46AC88FF2429261900851288 /* MovieDBService */,
 				469FCEA22423E1ED00605AA0 /* View */,
 				469FCE982423E08800605AA0 /* Controller */,
 				46CA04C4241FF8560047057C /* Network */,
@@ -245,6 +258,7 @@
 			files = (
 				46CA04CA241FFC410047057C /* Movie.m in Sources */,
 				469FCEA02423E08800605AA0 /* MovieDetailsViewController.m in Sources */,
+				46AC89012429263500851288 /* MovieDBService.m in Sources */,
 				46CA04C3241FF84F0047057C /* Network.m in Sources */,
 				469FCEA12423E08800605AA0 /* ViewController.m in Sources */,
 				46CA04AA241FF4D90047057C /* AppDelegate.m in Sources */,

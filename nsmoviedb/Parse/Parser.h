@@ -10,15 +10,9 @@
 #define Parse_h
 @interface Parser : NSObject
 
-//@property (strong, nonatomic) Network *network;
-//@property (strong, nonatomic) NSArray<Movie> *popularMovies;
-//@property (strong, nonatomic) NSArray<Movie> *nowPlayingMovies;
-//@property (strong, nonatomic) NSData *poster;
-- (NSMutableArray*) popularMovies: (NSDictionary*) response;
++ (NSMutableArray*) parseMovies: (NSDictionary*) response;
 
-- (NSMutableArray*) nowPlayingMovies: (NSDictionary*) response;
-
-+ (NSString*) genreName: (NSNumber*) genreId;
++ (NSString*) genreName: (NSNumber*) genreId genresDic: (NSMutableArray*) genres;
 
 @end
 
