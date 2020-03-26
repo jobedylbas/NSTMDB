@@ -36,7 +36,7 @@ NSString *sectionName02 = @"Now Playing";
     [super viewDidLoad];
     self.movies = NSMutableArray.new;
     self.movieDBService = MovieDBService.new;
-    
+    [self setNavigationBar];
     [self.movieDBService reqPopularMovies: ^(NSMutableArray *data, NSError *error) {
                       if (error) {
                           NSLog(@"%@", [error localizedDescription]);
@@ -48,7 +48,9 @@ NSString *sectionName02 = @"Now Playing";
                                   NSLog(@"%@", [error localizedDescription]);
                               } else {
                                   [self.movies addObjectsFromArray: data];
+                                  
                                   self.tableViewMovieSource = [[NSMutableArray <Movie *> alloc] initWithArray:self.movies];
+                                  
                                   [self.tableView reloadData];
                               }
                           }];
