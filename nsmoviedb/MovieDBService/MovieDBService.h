@@ -16,6 +16,7 @@
 #define POSTER_URL @"http://image.tmdb.org/t/p/w185"
 #define GENRE_URL @"3/genre/movie/list"
 
+#import "Movie.h"
 
 @interface MovieDBService: NSObject
 
@@ -23,7 +24,9 @@
 
 - (void) reqNowPlayingMovies: (void (^)(NSMutableArray*, NSError *))completionBlock;
 
-- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock;
+//- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock;
+
+- (void) getMovieGenre: (Movie*) movie handler: (void (^)(NSError *))completionBlock;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "MovieDetailsViewController.h"
+#import "MovieDBService.h"
 #import "Movie.h"
 
 @interface MovieDetailsViewController ()
@@ -17,8 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    MovieDBService *movieDBService = MovieDBService.new;
     // Do any additional setup after loading the view.
-    [self setData];
+    [movieDBService getMovieGenre: self.movie handler:^(NSError *error) {
+        if(error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            [self setData];
+        }
+    }];
 }
 
 - (void)setData {
@@ -26,7 +34,7 @@
         self.posterImage.image = [UIImage imageWithData: self.movie.poster];
         self.posterImage.layer.cornerRadius = 10;
         [self movieTitle].text = [self movie].title;
-//        [self category].text = [self movie].categories;
+        [self category].text = [self.movie.categories componentsJoinedByString:@", "];;
         [self rating].text = [self movie].score.stringValue;
         [self overview].text = [self movie].overview;
     }

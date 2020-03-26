@@ -16,11 +16,9 @@
 @property (nonatomic) NSString *posterPath;
 @property (strong, nonatomic) NSString *title;
 @property (nonatomic, copy, readwrite) NSString *overview;
-@property (strong, nonatomic) NSMutableArray *categories;
+@property (strong, nonatomic) NSMutableArray *categoriesIds;
 @property (nonatomic) NSNumber *score;
-
-
-
+@property (strong, nonatomic) NSMutableArray *categories;
 @end
 
 #endif /* Movie_h */

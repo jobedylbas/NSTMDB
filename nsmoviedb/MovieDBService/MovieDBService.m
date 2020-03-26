@@ -10,7 +10,7 @@
 #import "MovieDBService.h"
 #import "Network.h"
 #import "Parser.h"
-#import "Movie.h"
+//#import "Movie.h"
 
 
 @implementation MovieDBService
@@ -92,7 +92,7 @@
      ];
 }
 
-- (void) reqMovieGenres: (void (^)(NSMutableArray*, NSError *))completionBlock {
+- (void) reqMovieGenres: (void (^)(NSDictionary*, NSError *))completionBlock {
     [Network makeRequest: [self genreURL]
         completion: ^(NSData *moviesData, NSError *error) {
                 if (error) {
@@ -102,6 +102,26 @@
                     NSDictionary *jsonGenres = [NSJSONSerialization JSONObjectWithData:moviesData options:NSJSONReadingMutableLeaves error:nil];
                     completionBlock(jsonGenres[@"genres"], error);
                 }
+    }];
+}
+
+- (void) getMovieGenre: (Movie*) movie handler: (void (^)(NSError *))completionBlock {
+    [self reqMovieGenres:^(NSDictionary *genres, NSError *error) {
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            for(NSNumber *categorieId in movie.categoriesIds) {
+                for(NSDictionary *genre in genres) {
+                    
+                    if(categorieId == genre[@"id"]) {
+                        NSLog(@"%@", genre);
+                        [movie.categories addObject: genre[@"name"]];
+                    }
+                }
+            }
+            completionBlock(error);
+
+        }
     }];
 }
 

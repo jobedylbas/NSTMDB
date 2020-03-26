@@ -139,7 +139,7 @@ NSInteger currentIndex = 0;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:segueIdentifier]) {
         MovieDetailsViewController *mdvc = [segue destinationViewController];
-        mdvc.movie = [self feedTableView:currentIndex];
+        mdvc.movie = [self feedTableView: currentIndex];
     }
 }
 
